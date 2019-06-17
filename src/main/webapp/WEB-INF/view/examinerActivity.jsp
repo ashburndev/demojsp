@@ -19,7 +19,14 @@
     <h2>Hello ${name}!</h2>
     
     <form:form method="POST" modelAttribute="examinerActivity">
-      <form:select path="personsAffected" items="${personsAffectedMap}" />
+      <c:choose>
+        <c:when test="${showPersonsAffectedFlag}">
+          <form:select path="personsAffected" items="${personsAffectedMap}" />
+        </c:when>
+        <c:otherwise>
+          <form:hidden id="personsAffected" path="personsAffected"  value="For this calendar" />
+        </c:otherwise>
+      </c:choose>
       <br/><br/>
       <form:label path="firstName">first name:</form:label>
       <form:input path="firstName"/>

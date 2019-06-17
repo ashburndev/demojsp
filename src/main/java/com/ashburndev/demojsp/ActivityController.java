@@ -32,6 +32,7 @@ public class ActivityController {
       @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
     model.addAttribute("name", name);
 
+    boolean showPersonsAffectedFlag = false;
     ActivityCommand examinerActivity = new ActivityCommand();
     Map<String, String> personsAffectedMap = new LinkedHashMap<String, String>();  // preserves order 
     String personsAffectedListJson = "";  // use jackson to create the string
@@ -67,6 +68,7 @@ public class ActivityController {
     //  examinerActivity.setPersonsAffectedListJson(personsAffectedListJson);
     //  examinerActivity.setPersonsAffectedMapJson(personsAffectedMapJson);
 
+    model.addAttribute("showPersonsAffectedFlag", showPersonsAffectedFlag);
     model.addAttribute("personsAffectedList", personsAffectedList);
     model.addAttribute("personsAffectedMap", personsAffectedMap);
     model.addAttribute("personsAffectedListJson", personsAffectedListJson);
